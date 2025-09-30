@@ -1,2 +1,4 @@
 # 1030510590_BS435_WebProgramlama
-Web Programlama proje ödevi.
+Öğrenci Numarası: 1030510590  
+Öğrenci Adı: Gürkan Gülbahar
+Ders Adı: BS435 Web Programlama
