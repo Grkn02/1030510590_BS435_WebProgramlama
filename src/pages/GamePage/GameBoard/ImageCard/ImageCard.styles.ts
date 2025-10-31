@@ -1,6 +1,6 @@
 import { type SxProps, type Theme } from '@mui/material/styles';
 
-// Dış sarmalayıcı - Artık 3D'ye gerek yok, basit bir konteyner
+// basit bir konteyner
 export const cardContainerStyles: SxProps<Theme> = {
   width: 220,
   height: 220,

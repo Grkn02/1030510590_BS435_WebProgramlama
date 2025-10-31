@@ -6,6 +6,8 @@ import App from './App.tsx'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
+
+
 const theme = createTheme({
   palette: {
     mode: 'light',
@@ -18,7 +20,8 @@ createRoot(document.getElementById('root')!).render(
     {/* Bütün uygulamayı (App) MUI'nin tema sağlayıcısı ile sarmalıyoruz */}
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <App />
+        <App />
+  
     </ThemeProvider>
     
   </StrictMode>,

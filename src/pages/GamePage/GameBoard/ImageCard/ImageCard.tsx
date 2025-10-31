@@ -28,7 +28,7 @@ const ImageCard: React.FC<ImageCardProps> = ({
   disabled = false,
   cardStatus,
 }) => {
-  const theme = useTheme();
+  const theme = useTheme();    
 
   const handleClick = () => {
     if (disabled) return;
