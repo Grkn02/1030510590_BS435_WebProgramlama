@@ -5,7 +5,7 @@ import App from './App.tsx'
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-
+import { BrowserRouter } from 'react-router-dom'
 
 
 const theme = createTheme({
@@ -19,8 +19,10 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     {/* Bütün uygulamayı (App) MUI'nin tema sağlayıcısı ile sarmalıyoruz */}
     <ThemeProvider theme={theme}>
+      <BrowserRouter>
       <CssBaseline />
         <App />
+      </BrowserRouter>
   
     </ThemeProvider>
     
