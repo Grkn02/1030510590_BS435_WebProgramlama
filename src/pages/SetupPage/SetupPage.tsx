@@ -6,14 +6,14 @@ import PlayerNameInputs from "./PlayerNameInputs";
 import GameModeButtons from "./GameModeButtons";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import { useNavigate } from "react-router-dom";
+import { useGame } from '../../contexts/GameContext';
+import { type GameState } from '../../types/GameTypes';
 
-// --- Bileşen Adı Güncellendi (App -> SetupPage) ---
 function SetupPage() {
 
-  // --- Tüm state ve handler mantığı buraya taşındı ---
+  const { setGameState } = useGame();
   const [playerCount, setPlayerCount] = useState<number>(1);
   const [currentNames, setCurrentNames] = useState<string[]>([]);
-  
   const navigate = useNavigate();
 
   const handleNamesChange = (names: string[]) => {
@@ -25,21 +25,40 @@ function SetupPage() {
   };
 
   const handleStartGame = () => {
+    // 1. Kontrol: Girilen isim sayısı, seçilen oyuncu sayısına eşit mi?
+    if (currentNames.length !== playerCount) {
+      alert(`Lütfen ${playerCount} oyuncu için tam olarak ${playerCount} adet isim giriniz.`);
+      return; // Koşul sağlanmazsa fonksiyonu burada sonlandır.
+    }
+    
+    // 2. Kontrol (Ek Olarak): Girilen isimler boş değer içeriyor mu?
+    // Eğer tüm oyuncular için isim girilmiş, ancak bazıları boş string ise (örn: ['Ali', '']),
+    // bu kontrolü de eklemek faydalı olur.
+    const hasEmptyName = currentNames.some(name => name.trim() === '');
+    if (hasEmptyName) {
+        alert("Lütfen tüm oyuncu adlarını doldurunuz.");
+        return;
+    }
+
+   
+      setGameState({ 
+      playerCount: playerCount,
+      playerNames: currentNames
+    });
+
     navigate('/game');
+    
+    
   };
 
   return (
-    // --- JSX (render) kısmı aynen kopyalandı ---
+   
     <Container sx={{ my: 4 }} maxWidth="sm">
       <Stack 
         spacing={4} 
         alignItems="center" 
       >
         <PageHeader title="Aİ FOTO BULMA OYUNU" />
-      
-        <Typography variant="body1">
-          { currentNames[1]} PageHeader'ın altındaki diğer içerikler buraya gelecek.{ currentNames[0]}
-        </Typography>
         
         <RulesDisplay rulesText="karşına çıkacak üç fotoğraftan hangisinin yapay zeka tarafından üretildiğini bulabilir misin? Gözlem yeteneğini test et, doğru fotoğrafı seç ve puanları topla!"/>
         
@@ -61,5 +80,5 @@ function SetupPage() {
   );
 }
 
-// --- Export Adı Güncellendi ---
+
 export default SetupPage;

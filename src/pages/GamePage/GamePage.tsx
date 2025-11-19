@@ -1,12 +1,26 @@
+import { useGame } from '../../contexts/GameContext';
 
 
-// --- Bileşen Adı Güncellendi (App -> SetupPage) ---
 function GamePage() {
+  const { playerCount, playerNames } = useGame();
 
   
 
   return (
-    <>fdgdsgdsgds</>
+    <div>
+      <h1>2. Sayfa: Oyun Ekranı</h1>
+      
+      <h2>{playerCount} Oyunculu</h2>
+      
+      <h3>Oyuncu Adları:</h3>
+      <ul>
+        {playerNames.map((name, index) => (
+          <li key={index}>Oyuncu {index + 1}: **{name}**</li>
+        ))}
+      </ul>
+      
+      <p>Oyun, yukarıdaki verilere göre başlatılıyor...</p>
+    </div>
    
   );
 }

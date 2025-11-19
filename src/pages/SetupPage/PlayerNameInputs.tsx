@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Stack, TextField, IconButton, InputAdornment } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear'; // (X) ikonu için
 
-// Component'in dış dünyadan alacağı "talimatları" (props) tanımlıyoruz
+
 interface PlayerNameInputsProps {
   // Dışarıdan kaç oyuncu girişi olacağını belirten prop
   playerCount: number ;
@@ -11,26 +11,21 @@ interface PlayerNameInputsProps {
   onNamesChange: (names: string[]) => void;
 }
 
-/**
- * Oyuncu adlarını almak için dinamik sayıda TextField gösteren "aptal" component.
- * Gerekli tüm bilgileri ve fonksiyonları props olarak alır.
- */
+
 const PlayerNameInputs: React.FC<PlayerNameInputsProps> = ({ playerCount, onNamesChange }) => {
-  // 1. Component'in KENDİ İÇ STATE'i:
-  // Kullanıcının yazdığı isimleri anlık olarak tutmak için.
+ 
   const [playerNames, setPlayerNames] = useState<string[]>(Array(playerCount).fill(''));
 
-  // 2. DIŞARIDAN GELEN 'playerCount' PROP'UNU İZLEYEN EFFECT:
-  // Eğer üst component (App.tsx) oyuncu sayısını 1'den 2'ye (veya 2'den 1'e)
+ 
   // değiştirirse, bu component'in içindeki isim listesini sıfırlarız.
   useEffect(() => {
     setPlayerNames(Array(playerCount).fill(''));
   }, [playerCount]);
 
-  // 3. İÇ STATE'İ İZLEYEN EFFECT:
+ 
   // Component'in içindeki 'playerNames' state'i her değiştiğinde,
   // 'onNamesChange' prop'u aracılığıyla bu yeni bilgiyi
-  // ana component'e (App.tsx) "raporluyoruz".
+  // ana component'e "raporluyoruz".
   useEffect(() => {
     onNamesChange(playerNames);
   }, [playerNames, onNamesChange]);
