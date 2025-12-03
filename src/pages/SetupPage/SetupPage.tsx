@@ -16,6 +16,8 @@ function SetupPage() {
   const [currentNames, setCurrentNames] = useState<string[]>([]);
   const navigate = useNavigate();
 
+  
+
   const handleNamesChange = (names: string[]) => {
     setCurrentNames(names);
   };
