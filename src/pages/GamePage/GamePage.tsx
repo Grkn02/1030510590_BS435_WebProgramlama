@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+
 import { useGame } from '../../contexts/GameContext';
 import InfoHint from './InfoHint/InfoHint';
+import GameInfoCard from './GameInfoCard/GameInfoCard';
 
 
 
@@ -21,6 +22,8 @@ function GamePage() {
       <h2>{playerCount} Oyunculu</h2>
        
        <InfoHint intervalDuration={6000} />
+
+       <GameInfoCard currentPlayer={playerNames[0]} currentTurn={2} remainingRights={2} />
 
        
       
