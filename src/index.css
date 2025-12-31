@@ -1,16 +1,38 @@
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Renkleri burada tanımlıyoruz (RGB formatında olması, opacity kullanabilmemizi sağlar) */
+:root {
+  /* Arka Planlar (Simsiyah değil, Çok Koyu Kozmik Lacivert) */
+  --color-game-bg: 8 10 20;       /* Deep Space Blue */
+  --color-game-card: 25 30 50;    /* Card Background - Biraz daha açık */
+
+  /* Metinler (Hafif Maviye Çalan Beyaz) */
+  --color-text-main: 240 245 255; 
+  --color-text-muted: 148 163 184;
+
+  /* Marka Renkleri (EŞSİZ KISIM) */
   
-  /* Bütün sayfa için varsayılan bir arka plan rengi belirlemek iyi bir pratiktir. */
-  background-color: #fcf7f7;
+  /* Brand Cyan yerine -> NEON RUBY (Yakut Kırmızısı) */
+  /* Bu renk "Yapay Zeka" veya "Tehlike" tarafını temsil eder */
+  --color-brand-cyan: 255 20 87;  /* #ff1457 - Canlı, modern bir kırmızı/pembe */
+  
+  /* Brand Purple yerine -> ELECTRIC SAPPHIRE (Elektrik Mavisi) */
+  /* Bu renk "Gerçek" veya "Mantık" tarafını temsil eder */
+  --color-brand-purple: 60 120 255; /* #3c78ff - Parlak, derin bir mavi */
+
+  /* Glow (Parlama) Rengi */
+  /* İkisinin karışımı olan bir Cyber-Mor */
+  --color-brand-neon: 180 60 255; 
+  
+  /* Durumlar */
+  --color-status-success: 16 185 129; /* Emerald Green */
+  --color-status-error: 255 40 40;    /* Bright Red */
 }
 
-/* React uygulamasının oturduğu ana elementi seçiyoruz */
-#root {
-  /* Genişliğinin %100 olmasını sağlıyoruz. */
-  /* Bu kural, MUI <Container>'ın kendini doğru ortalaması için KESİNLİKLE GEREKLİDİR. */
-  width: 100%;
+/* Genel Ayarlar */
+body {
+  /* Tailwind class'larını kullanarak değişkenleri çağırıyoruz */
+  @apply bg-game-bg text-game-text font-sans antialiased; 
 }
